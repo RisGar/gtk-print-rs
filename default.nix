@@ -24,5 +24,6 @@ rustPlatform.buildRustPackage (finalAttrs: {
     description = "Print in the CLI using GTK";
     homepage = "https://github.com/RisGar/gtk-print-rs";
     license = lib.licenses.eupl12;
+    platforms = lib.platforms.unix;
   };
 })
