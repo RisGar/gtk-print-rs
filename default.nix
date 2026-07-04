@@ -9,7 +9,7 @@ rustPlatform.buildRustPackage (finalAttrs: {
   pname = "gtk-print-rs";
   version = "0.1.0";
 
-  src = ./.;
+  src = lib.cleanSource ./.;
   cargoLock.lockFile = ./Cargo.lock;
 
   nativeBuildInputs = [
