@@ -31,5 +31,6 @@ rustPlatform.buildRustPackage (finalAttrs: {
     homepage = "https://github.com/RisGar/print-cli-rs";
     license = lib.licenses.eupl12;
     platforms = lib.platforms.linux ++ lib.platforms.darwin;
+    mainProgram = "print-cli-rs";
   };
 })
