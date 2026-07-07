@@ -16,8 +16,7 @@ fn main() -> glib::ExitCode {
 
     app.connect_activate(move |app| spawn_dialog(app, &args[1]));
 
-    const EMPTY: [&str; 0] = [];
-    app.run_with_args(&EMPTY)
+    app.run_with_args::<&str>(&[])
 }
 
 fn spawn_dialog(app: &Application, file_path: &str) {
