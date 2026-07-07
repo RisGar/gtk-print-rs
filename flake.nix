@@ -1,5 +1,5 @@
 {
-  description = "CLI to print using GTK";
+  description = "Print in the CLI";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -19,13 +19,10 @@
         system:
         let
           pkgs = nixpkgs.legacyPackages.${system};
-          # Explicitely include CUPS support on macOS as this package would be useless on there otherwise
-          gtk4 =
-            if pkgs.stdenv.hostPlatform.isDarwin then pkgs.gtk4.override { cupsSupport = true; } else pkgs.gtk4;
         in
         {
-          gtk-print-rs = pkgs.callPackage ./. { inherit gtk4; };
-          default = self.packages.${system}.gtk-print-rs;
+          print-cli-rs = pkgs.callPackage ./. { };
+          default = self.packages.${system}.print-cli-rs;
         }
       );
 
@@ -36,7 +33,7 @@
         in
         {
           default = pkgs.mkShell {
-            inputsFrom = [ self.packages.${system}.gtk-print-rs ];
+            inputsFrom = [ self.packages.${system}.print-cli-rs ];
             packages = with pkgs; [
               rustc
               cargo
